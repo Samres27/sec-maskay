@@ -1,0 +1,20 @@
+
+{% extends 'layoud/layoud.html' %}
+
+{% block content %}
+    <div class="p-5">
+        <form action="/escaneo/dominio" method="Post" class="flex border-2 border-black rounded-full overflow-hidden my-5">
+            <input type="text" id="buscar_dominio" 
+                    class="flex-1 py-2 px-4 outline-none" 
+                    placeholder="Buscar...">
+            <button id="search-button" 
+            
+                    class="w-10 h-10 bg-white  font-bold items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    
+            </button>
+        </from>
+    </div>
+{% endblock %}

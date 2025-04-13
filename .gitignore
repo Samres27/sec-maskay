@@ -1,0 +1,15 @@
+# Ignorar entornos virtuales
+env/
+venv/
+
+# Ignorar cachés de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar entornos de Windows PowerShell
+*.ps1
+
+# Archivos de logs o temporales
+*.log
+*.tmp
