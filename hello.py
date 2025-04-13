@@ -12,7 +12,7 @@ def index():
 def escaneoView():
     return render_template('escaneo/view.html')
 
-@app.route('/escaneo/dominio', methods =['POST'])
+@app.route('/escaneo/dominio')#, methods =['POST'])
         
 def escaneoDominio():
     return render_template('escaneo/show.html')
