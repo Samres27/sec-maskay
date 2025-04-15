@@ -3,8 +3,22 @@
 {% block content %}
 
 <div class="w-full justify-items-center">
-    <div class="mt-10 w-4/5 rounded overflow-hidden shadow-lg grid-cols-4 self-center">
-        <div>contendido para la creacion</div> 
-     </div>
+    {% for i in range(tam) %}
+        
+        {% set bg_color = 'bg-red-50' if i % 2 == 0 else 'bg-blue-50' %}
+        <div class="flex justify-center items-center h-20 mt-10 w-4/5 rounded overflow-hidden shadow-lg grid-cols-4 self-center  {{bg_color}}">
+            <div>
+                <strong>URL:</strong> {{d[i]['url']}} &nbsp;&nbsp;
+                <strong>Título:</strong> {{d[i]['title']}} &nbsp;&nbsp;
+                <strong>Webserver:</strong> {{d[i]['webserver']}} &nbsp;&nbsp;
+                <strong>IP:</strong> {{d[i]['host']}} &nbsp;&nbsp;
+                <strong>Tecnologías:</strong> {{", ".join(d[i]['tech'])}} &nbsp;&nbsp;
+                <strong>Estado:</strong> {{d[i]['status_code']}} &nbsp;&nbsp;
+                <strong>Tiempo de respuesta:</strong> {{d[i]['time']}} &nbsp;&nbsp;
+            </div> 
+        </div>
+        
+            
+    {% endfor %}
 </div>
 {% endblock %}
