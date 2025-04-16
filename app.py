@@ -10,16 +10,16 @@ def dominio_valido(dominio):
 
 def leerArchivo(archivo):
     data =[];
-    with open(archivo) as f:
+    with open(f"archivos/{archivo}") as f:
         for x in f:
             data.append(json.loads(x))
         
         return data
     
 def escaneo(dominio):
-    dirrecion = base64.encode(dominio)
-    subfinder=subprocess.Popen(["./binarios/subfinder","-d",dominio, "-silent"], stdout=subprocess.PIPE)
-    httpx = subprocess.Popen(["./binarios/httpx", "-silent" "-status-code", "-title", "-tech-detect", 
+    dirrecion = base64.b64encode(dominio.encode()).decode("utf-8")
+    subfinder=subprocess.Popen(["./binarios/subfinder","-d", dominio, "-silent"], stdout=subprocess.PIPE)
+    httpx = subprocess.Popen(["./binarios/httpx", "-silent","-status-code", "-title", "-tech-detect", 
                               "-server", "-ip","-cname" ,"-location" ,"-content-length" ,
                               "-web-server" ,"-no-color" ,"-json"], stdin=subfinder.stdout, stdout=subprocess.PIPE)
     subfinder.stdout.close()
@@ -32,7 +32,7 @@ def escaneo(dominio):
 ### APP WEB
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect("/escaneo")
 
 @app.route('/escaneo')
 def escaneoView():
@@ -44,7 +44,7 @@ def escaneoDominio():
         dominio = request.form.get("buscar_dominio")
         if dominio_valido(dominio): 
             dir= escaneo(dominio)
-            return redirect(url_for('/escaneo/dominio', escan=dir))
+            return redirect(url_for('escaneoDominio', escan=dir))
         return redirect("/escaneo")
     elif request.method == 'GET':
         data=leerArchivo(request.args.get('escan', default="fee", type=str))

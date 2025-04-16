@@ -3,8 +3,8 @@
 
 {% block content %}
     <div class="p-5">
-        <form action="/escaneo/dominio" method="Post" class="flex border-2 border-black rounded-full overflow-hidden my-5">
-            <input type="text" id="buscar_dominio" 
+        <form action="/escaneo/dominio" method="POST" class="flex border-2 border-black rounded-full overflow-hidden my-5">
+            <input type="text" id="buscar_dominio" name="buscar_dominio"
                     class="flex-1 py-2 px-4 outline-none" 
                     placeholder="Buscar...">
             <button id="search-button" 
