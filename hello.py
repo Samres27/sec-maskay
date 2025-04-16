@@ -26,6 +26,7 @@ def escaneo(dominio):
     output, _ = httpx.communicate()
     with open(f"archivos/{dirrecion}", 'w') as guardar:
         guardar.write(output.decode())
+    httpx.stdout.close()
     return dirrecion
 
 ### APP WEB
